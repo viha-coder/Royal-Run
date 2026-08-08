@@ -1,16 +1,16 @@
- # Royal Run
+# Royal Run
 
 Royal Run is a 3D endless runner developed in Unity using C#.
 
 The project is being developed as part of my Unity and C# learning journey, with a focus on practicing programming concepts and exploring Unity systems through a small and manageable game.
 
- ## Project Status
+## Project Status
 
- **In Development**
+**In Development**
 
 New mechanics and systems will be added as I progress through the course.
 
- ## Current Features
+## Current Features
 
 - Player movement using Unity's Input System and `Rigidbody.MovePosition()`.
 - Movement limits using `Mathf.Clamp()`.
@@ -20,7 +20,7 @@ New mechanics and systems will be added as I progress through the course.
 - Random obstacle rotations.
 - Physics Materials for different physical interactions.
 
- ## Concepts Learned
+## Concepts Learned
 
 ### Player Movement
 - Read two-dimensional input using `Vector2`.
@@ -28,42 +28,42 @@ New mechanics and systems will be added as I progress through the course.
 - Used `FixedUpdate()` and `Time.fixedDeltaTime` for physics-based movement.
 - Limited the player's movement area using `Mathf.Clamp()`.
 
- ### Level Generation
+### Level Generation
 - Created reusable level chunks with Prefabs.
 - Used a `List<GameObject>` to keep track of active chunks.
 - Used `for` loops to spawn and iterate through chunks.
 - Calculated new spawn positions based on the previous chunk.
 - Destroyed chunks after they passed the camera and spawned replacements.
 
- ### Coroutines & Loops
+### Coroutines & Loops
 - Created Coroutines using `IEnumerator`.
 - Used `WaitForSeconds` to execute actions over time.
 - Used `while (true)` for continuous obstacle spawning.
 - Practiced the difference between `for` loops for a defined number of repetitions and `while` loops for continuous behavior.
 
- ### Obstacle Spawning
+### Obstacle Spawning
 - Instantiated obstacle Prefabs during gameplay.
 - Controlled the spawn interval through a serialized variable.
 - Used `Random.rotation` to give spawned obstacles random orientations.
 
- ### Physics Materials
+### Physics Materials
 - Learned how friction and bounciness affect Collider interactions.
 - Used Physics Materials to change physical behavior without writing custom physics logic.
 
- ## Scripts
+## Scripts
 
- - `PlayerController.cs` — handles player input and movement.
- - `LevelGenerator.cs` — manages moving, removing, and replacing level chunks.
- - `ObstacleSpawner.cs` — continuously spawns obstacles using a Coroutine.
+- `PlayerController.cs` — handles player input and movement.
+- `LevelGenerator.cs` — manages moving, removing, and replacing level chunks.
+- `ObstacleSpawner.cs` — continuously spawns obstacles using a Coroutine.
 
- ## Technologies
+## Technologies
 
- - Unity 6
- - C#
- - Unity Input System
- - Unity Physics
- - Git
- - GitHub
+- Unity 6
+- C#
+- Unity Input System
+- Unity Physics
+- Git
+- GitHub
 
  ## Learning Goal
 
