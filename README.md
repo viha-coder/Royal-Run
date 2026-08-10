@@ -65,12 +65,12 @@ New mechanics and systems will be added as I progress through the course.
 - Git
 - GitHub
 
-## Learning Goal
+ ## Learning Goal
 
 Royal Run is a learning-focused project.
 
 The goal is not to create a large game, but to use a smaller project to practice C# concepts, explore Unity systems, and improve my understanding of gameplay programming.
 
----
+ ---
 
 This is my fourth Unity/C# project in my game development learning journey.
