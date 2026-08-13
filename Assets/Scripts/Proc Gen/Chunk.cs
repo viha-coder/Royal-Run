@@ -3,13 +3,18 @@ using System.Collections.Generic;
 
 public class Chunk : MonoBehaviour
 {
+    [Header("Prefab References")]
     [SerializeField] GameObject fencePrefab;
     [SerializeField] GameObject applePrefab;
     [SerializeField] GameObject coinPrefab;
+
+    [Header("Spawn Settings")]
     [SerializeField] float spawnAppleChance = .3f;
     [SerializeField] float spawnCoinChance = .5f;
-    [SerializeField] float[] lanes = {-3f, 0f, 3f};
     [SerializeField] float coinSpacing = 2f;
+
+    [Header("Lane Settings")]
+    [SerializeField] float[] lanes = {-3f, 0f, 3f};
 
     List<int> availableLanes = new List<int> {0, 1, 2};
 
