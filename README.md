@@ -6,6 +6,8 @@ The project was created as part of my Unity and C# learning journey, with a focu
 
 ## WebGL
 
+The Web version is available on the Itch.io page:
+
 [Play Royal Run in your browser](https://gmcoder.itch.io/royal-run)
 
 ## Download
