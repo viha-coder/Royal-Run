@@ -4,6 +4,20 @@ Royal Run is a 3D endless runner developed in Unity using C#.
 
 The project was created as part of my Unity and C# learning journey, with a focus on practicing programming concepts, procedural generation, gameplay systems and Unity's physics tools through a small and manageable game.
 
+## WebGL
+
+The Web version is available on the Itch.io page:
+
+[Play Royal Run in your browser](https://gmcoder.itch.io/royal-run)
+
+## Download
+
+The Windows version is available on the GitHub Releases page:
+
+[Download Royal Run V1.0](https://github.com/viha-coder/Royal-Run/releases/tag/V1.0)
+
+Extract the ZIP file and run `Royal Run.exe`.
+
 ## Project Status
 
 **Completed**
