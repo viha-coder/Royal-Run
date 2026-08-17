@@ -1,10 +1,8 @@
 # Auto detect text files and perform LF normalization
 * text=auto
 
-# Third-party Unity assets
-Assets/Imported\ Assets/** linguist-vendored
-Assets/TextMesh\ Pro/** linguist-vendored
+# Treat Unity assets as third-party/generated content for language statistics
+Assets/** linguist-vendored
 
-# Third-party shader code
-*.shader linguist-vendored
-*.hlsl linguist-vendored
+# Keep my C# source code in the language statistics
+Assets/Scripts/** -linguist-vendored
