@@ -2,13 +2,17 @@
 
 Royal Run is a 3D endless runner developed in Unity using C#.
 
-The project is being developed as part of my Unity and C# learning journey, with a focus on practicing programming concepts and exploring Unity systems through a small and manageable game.
+The project was created as part of my Unity and C# learning journey, with a focus on practicing programming concepts, procedural generation, gameplay systems and Unity's physics tools through a small and manageable game.
 
 ## Project Status
 
-**In Development**
+**Completed**
 
-New mechanics and systems will be added as I progress through the course.
+Royal Run is now complete as a learning project.
+
+There are many features that could still be added or expanded in the future, but the goal of this project was to practice programming concepts and explore new Unity systems rather than build a large production game.
+
+I may return to the project in the future to expand it with new mechanics and features.
 
 ## Current Features
 
@@ -18,18 +22,23 @@ New mechanics and systems will be added as I progress through the course.
 - Automatic removal and replacement of old chunks.
 - Multiple randomly selected level chunk Prefabs.
 - Checkpoint chunks spawned at configurable intervals.
+- Lane-based obstacle and pickup generation.
 - Continuous obstacle spawning using Coroutines.
 - Random obstacle rotations.
+- Falling rock obstacles.
 - Physics Materials for different physical interactions.
-- Lane-based obstacle and pickup spawning.
 - Apple and coin pickup types.
 - Random coin groups with configurable spacing.
 - Score system with a TextMeshPro UI scoreboard.
 - Configurable score values for coin pickups.
 - Dependency injection for passing the `ScoreManager` to spawned objects.
-- Player hit animation triggered by collisions.
+- Player hit animations triggered by collisions.
 - Collision cooldown to prevent repeated hit animations.
 - Automatic cleanup of fallen obstacles.
+- Timed game session with a game over state.
+- Slow-motion game over sequence.
+- Automatic level reload after game over.
+- Background music and gameplay audio.
 
 ## Concepts Learned
 
@@ -44,19 +53,19 @@ New mechanics and systems will be added as I progress through the course.
 
 - Created reusable level chunks with Prefabs.
 - Used a `List<GameObject>` to keep track of active chunks.
-- Used `for` loops to spawn and iterate through chunks.
-- Calculated new spawn positions based on the previous chunk.
+- Used loops to spawn and iterate through chunks.
+- Calculated new spawn positions based on previous chunks.
 - Destroyed chunks after they passed the camera and spawned replacements.
 - Used an array of chunk Prefabs to create level variation.
 - Randomly selected which chunk should spawn.
-- Created a separate method to decide which chunk Prefab should be instantiated.
+- Separated chunk selection from chunk spawning using dedicated methods.
 
-### Checkpoint Chunks
+### Checkpoint System
 
 - Created a dedicated checkpoint chunk Prefab.
 - Tracked the total number of spawned chunks.
 - Used the modulus operator (`%`) to identify checkpoint intervals.
-- Used logical conditions with `&&` to avoid spawning a checkpoint at the initial count of zero.
+- Used logical conditions with `&&` to handle the initial zero value.
 - Added a configurable checkpoint interval instead of hardcoding the value.
 - Refactored checkpoint selection into `ChooseChunkToSpawn()`.
 
@@ -65,23 +74,25 @@ New mechanics and systems will be added as I progress through the course.
 - Passed dependencies to objects instead of having each object search for them.
 - Injected the `ScoreManager` from the `LevelGenerator` into each `Chunk`.
 - Passed the same `ScoreManager` reference from a `Chunk` to spawned coins.
-- Used initialization methods to provide dependencies after objects are instantiated.
+- Used initialization methods to provide dependencies after objects were instantiated.
 - Reduced the need for scene-wide object searches such as `FindAnyObjectByType()`.
 
 ### Coroutines & Loops
 
 - Created Coroutines using `IEnumerator`.
 - Used `WaitForSeconds` to execute actions over time.
-- Used `while (true)` for continuous obstacle spawning.
-- Practiced the difference between `for` loops for a defined number of repetitions and `while` loops for continuous behavior.
+- Used `while` loops for continuous behavior.
+- Used `for` loops when working with a defined number of iterations.
+- Used Coroutines to control delayed gameplay actions such as level reloading.
 
 ### Obstacle Spawning
 
 - Instantiated obstacle Prefabs during gameplay.
-- Controlled the spawn interval through a serialized variable.
-- Used `Random.rotation` to give spawned obstacles random orientations.
-- Used available lane lists to control where objects can spawn.
-- Prevented multiple gameplay objects from occupying the same lane.
+- Controlled spawn intervals through serialized variables.
+- Used random rotations for spawned obstacles.
+- Used available lane lists to control where objects could spawn.
+- Prevented gameplay objects from occupying conflicting lanes.
+- Added falling rock obstacles as an additional gameplay hazard.
 
 ### Pickup System
 
@@ -105,14 +116,25 @@ New mechanics and systems will be added as I progress through the course.
 - Triggered animations when the player collides with obstacles.
 - Used Animator triggers to control hit animations.
 - Added a cooldown to prevent repeated collision animations.
-- Used `Invoke()` to restore the player's ability to receive another hit.
+- Used `Invoke()` to control the cooldown timing.
 
 ### Physics & Time
 
-- Learned how physics updates use a fixed timestep.
-- Explored how `Time.timeScale` affects physics simulation.
-- Learned why a very low time scale can make Rigidbody movement appear jittery.
-- Learned how `Time.fixedDeltaTime` can be adjusted when working with slow motion.
+- Learned how Unity physics uses a fixed timestep.
+- Explored how `Time.timeScale` affects gameplay and physics simulation.
+- Learned why very low time scales can make Rigidbody movement appear jittery.
+- Learned how `Time.fixedDeltaTime` relates to physics updates.
+- Used slow motion as part of the game over sequence.
+
+### Game Flow
+
+- Created a timed game session.
+- Implemented a game over state.
+- Disabled player control after game over.
+- Displayed game over UI feedback.
+- Used a Coroutine to delay the restart.
+- Reloaded the current scene using `SceneManager`.
+- Restored `Time.timeScale` before restarting the game.
 
 ### Physics Materials
 
@@ -128,21 +150,23 @@ New mechanics and systems will be added as I progress through the course.
 
 ### Managers
 
-- `GameManager.cs` — manages game-level behavior.
+- `GameManager.cs` — manages game state, timer, game over and level restarting.
 - `ScoreManager.cs` — stores the score and updates the scoreboard UI.
 
 ### Player
 
 - `PlayerController.cs` — handles player input and movement.
-- `PlayerCollisionHandler.cs` — handles player collision feedback and hit animation cooldown.
+- `PlayerCollisionHandler.cs` — handles collision feedback and hit animation cooldown.
 - `CameraController.cs` — manages camera behavior.
 
 ### Procedural Generation
 
 - `LevelGenerator.cs` — manages chunk generation, movement, replacement and checkpoint selection.
 - `Chunk.cs` — manages lane-based spawning inside individual level chunks.
+- `Checkpoint.cs` — handles checkpoint behavior.
 - `ObstacleSpawner.cs` — continuously spawns obstacles using a Coroutine.
 - `ObstacleDestroy.cs` — removes objects that fall outside the playable area.
+- `Rock.cs` — handles falling rock behavior.
 
 ### Pickups
 
@@ -162,10 +186,12 @@ New mechanics and systems will be added as I progress through the course.
 
 ## Learning Goal
 
-Royal Run is a learning-focused project.
+Royal Run was created as a learning-focused project.
 
-The goal is not to create a large game, but to use a smaller project to practice C# concepts, explore Unity systems, and improve my understanding of gameplay programming.
+The goal was not to create a large or feature-complete game, but to use a smaller project to practice C# concepts, explore Unity systems and improve my understanding of gameplay programming.
+
+The project has reached the point I wanted for this stage of my learning journey. I may return to Royal Run in the future and expand it with new mechanics, content and polish as my skills continue to grow.
 
 ---
 
-This is my fourth Unity/C# project in my game development learning journey.
+This is my fourth completed Unity/C# project in my game development learning journey.
