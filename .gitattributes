@@ -4,3 +4,7 @@
 # Third-party Unity assets
 Assets/Imported\ Assets/** linguist-vendored
 Assets/TextMesh\ Pro/** linguist-vendored
+
+# Third-party shader code
+*.shader linguist-vendored
+*.hlsl linguist-vendored
